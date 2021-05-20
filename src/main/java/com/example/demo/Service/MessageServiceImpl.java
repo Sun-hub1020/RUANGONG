@@ -18,6 +18,7 @@ import java.util.Date;
 public class MessageServiceImpl implements MessageService{
     @Resource
     private MessageRepository messageRepository;
+    @Resource
     private AbnormalRepository abnormalRepository;
 
     @Override
@@ -39,7 +40,7 @@ public class MessageServiceImpl implements MessageService{
         if(message.getHealthcondition() == 1 || message.getRisklocation() == 1 || message.getRiskcontact() == 1)
         {
             AbnormalDao abnormalDao = new AbnormalDao();
-
+            System.out.println(message);
             Class clazz = abnormalDao.getClass();
             Field[] fields = clazz.getDeclaredFields();
             Class clazzm = message.getClass();
@@ -50,15 +51,19 @@ public class MessageServiceImpl implements MessageService{
                         a.setAccessible(true);
                         m.setAccessible(true);
                         a.set(abnormalDao,m.get(message));
+//                        System.out.println(m.getName());
+//                        System.out.println(m.get(message));
+//                        System.out.println(a.get(abnormalDao));
                     }
                 }
             }
-            abnormalRepository.save(abnormalDao);
+//            System.out.println(abnormalDao);
 //            abnormalDao.setOpenid(message.getOpenid());
 //            abnormalDao.setHealthcondition(message.getHealthcondition());
 //            abnormalDao.setTemperature(message.getTemperature());
 //            abnormalDao.setSymptom(message.getSymptom());
-//            abnormalDao
+            abnormalRepository.save(abnormalDao);
+
         }
 
 

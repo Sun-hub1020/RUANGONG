@@ -11,17 +11,17 @@ public class AbnormalDao {
     @Id
     private String Openid;
     private Integer Healthcondition;
-    private Integer Temperature = 0;
-    private Integer Symptom = 0;
-    private Integer Isolation = 0;
+    private Integer Temperature;
+    private Integer Symptom ;
+    private Integer Isolation ;
 
     private Integer Risklocation;
-    private Integer Todaylocation = 0;
-    private Integer Fourteenlocation = 0;
+    private Integer Todaylocation;
+    private Integer Fourteenlocation;
 
     private Integer Riskcontact;
-    private Integer Peoplecontact = 0;
-    private Integer Communitycontact = 0;
+    private Integer Peoplecontact;
+    private Integer Communitycontact;
 
     private double Longitude;
     private double Latitude;
